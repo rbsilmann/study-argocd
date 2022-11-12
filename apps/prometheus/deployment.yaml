@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - name: prometheus
+        image: bitnami/prometheus:2.39.1
+        resources: {}
+          # limits:
+          #   memory: "128Mi"
+          #   cpu: "500m"
+        ports:
+        - containerPort: 9090
+        volumeMounts:
+          - mountPath: /opt/bitnami/prometheus/conf/prometheus.yml
+            subPath: file
+            name: mnt
+      volumes:
+        - name: mnt
+          configMap:
+            name: prometheus-cfg
