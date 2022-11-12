@@ -25,4 +25,4 @@ data:
         target_limit: 0
         static_configs:
           - targets:
-              - "svc-prometheus:9090"
+              - "localhost:9090"
