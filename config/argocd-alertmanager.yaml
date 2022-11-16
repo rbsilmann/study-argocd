@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: alertmanager
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://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@github.com/rbsilmann/argo-cd.git
+    targetRevision: HEAD
+    path: apps/alertmanager
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      allowEmpty: true
+      selfHeal: true
