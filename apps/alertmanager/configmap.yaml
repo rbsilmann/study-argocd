@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alertmanager-cfg
+  namespace: monitoring
+data:
+  file: |
+    global:
+      resolve_timeout: "1m"
+
+    route:
+      receiver: telegram
+      group_by: 
+      - alertname
+      continue: false
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 1h
+
+    receivers:
+    - name: 'telegram'
+      telegram_configs:
+      - send_resolved: true
+        bot_token: '5595390067:AAGiA5h9fecqT9qkHQ8EGUnTqEwaRyeYb90'
+        chat_id: -801851258
+        api_url: 'https://api.telegram.org'
+        message: 'API Gateway crashed. There is no connection to the database.'
+    #parse_mode: "MarkdownV2"
