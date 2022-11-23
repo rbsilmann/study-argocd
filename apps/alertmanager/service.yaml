@@ -4,6 +4,7 @@ metadata:
   name: svc-alertmanager
   namespace: monitoring
 spec:
+  type: ClusterIP
   selector:
     app: alertmanager
   ports:

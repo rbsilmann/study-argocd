@@ -21,8 +21,8 @@ data:
     - name: 'telegram'
       telegram_configs:
       - send_resolved: true
-        bot_token: '5595390067:AAGiA5h9fecqT9qkHQ8EGUnTqEwaRyeYb90'
-        chat_id: -801851258
+        bot_token: 'your bot token'
+        chat_id: 'your bot id'
         api_url: 'https://api.telegram.org'
-        message: 'API Gateway crashed. There is no connection to the database.'
+        message: 'you message'
     #parse_mode: "MarkdownV2"
